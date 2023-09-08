@@ -7,5 +7,12 @@
 </head>
 <body>
     <h1>All comments</h1>
+
+    <% while(comments){ %>
+        <%= comments.comment %>
+        <p>Commented by <%= comments.author %></p>
+    <% } %>
+    <p></p>
+    <a href="/new-comment">+ add comment</a>
 </body>
 </html>
