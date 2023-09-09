@@ -95,6 +95,19 @@ router.patch('/comments/edit/:id' , (req , res) => {
         }
     })
     
+});
+
+router.delete('/comments/:id' , (req , res) => {
+    const id  = req.params.id;
+
+    db.query('DELETE FROM comment WHERE comment_id = ?', [id] , (err, results) => {
+        if(err){
+            console.log('error in deleting comment with id '.rainbow, id.rainbow , err);
+        }
+        else{
+            res.redirect('/');
+        }
+    })
 })
 
 module.exports = router;

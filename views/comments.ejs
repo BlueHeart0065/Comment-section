@@ -8,11 +8,16 @@
 <body>
     <h1>All comments</h1>
 
+    
     <% comments.forEach((comment) => { %>
-        <p><%= comment.comment_text %> - Comment by <%= comment.comment_author %></p>
-        <a href="/comments/<%= comment.comment_id %>">View comment</a>
-
+        <div style="border: 1px solid rgb(201, 201, 201); margin-bottom: 1vw; padding: 1vw; ">
+            <p><%= comment.comment_text %> - Comment by <%= comment.comment_author %></p>
+            <a href="/comments/<%= comment.comment_id %>">View comment</a>
+        </div>
+    
     <% }) %>
+
+
     <p></p>
     <a href="/new-comment">+ add comment</a>
 </body>

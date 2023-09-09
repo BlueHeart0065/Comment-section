@@ -13,7 +13,13 @@
         <p>Comment Author : <%= comment.comment_author %></p>
         <p>Comment Text : <%= comment.comment_text %></p>
         <a href="/comments/edit/<%= comment.comment_id %>">Edit comment</a>
+        <form action="/comments/<%= comment.comment_id %>?_method=DELETE" method="post">
+            <button>Delete</button>
+        </form>
+        <!-- <a href="/comment/<%= comment.comment_id %>">Delete</a> -->
+        <a href="/">Back</a>
     <% }) %>
+
 
 </body>
 </html>
