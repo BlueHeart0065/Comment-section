@@ -8,10 +8,11 @@
 <body>
     <h1>All comments</h1>
 
-    <% while(comments){ %>
-        <%= comments.comment %>
-        <p>Commented by <%= comments.author %></p>
-    <% } %>
+    <% comments.forEach((comment) => { %>
+        <p><%= comment.comment_text %> - Comment by <%= comment.comment_author %></p>
+        <a href="/comments/<%= comment.comment_id %>">View comment</a>
+
+    <% }) %>
     <p></p>
     <a href="/new-comment">+ add comment</a>
 </body>
