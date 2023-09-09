@@ -1,6 +1,7 @@
 const express = require('express');
 const mysql = require('mysql');
 
+
 const router = express.Router();
 
 const db = mysql.createConnection({
@@ -65,5 +66,35 @@ router.get('/comments/:id' , (req , res) => {
     });
 
 });
+
+router.get('/comments/edit/:id' , (req , res) => {
+    const id = req.params.id;
+
+    db.query('SELECT * FROM comment WHERE (comment_id) = (?)' , [id] , (err,results) => {
+        if(err){
+            console.log('error fetching comment with id'.rainbow,id.rainbow,err);
+        }
+        else{
+            res.render('edit-comment' , {comments : results});
+        }
+    });
+    
+});
+
+router.patch('/comments/edit/:id' , (req , res) => {
+    const id = req.params.id;
+    const {author , comment} = req.body;
+
+    db.query('UPDATE comment SET comment_author = ? , comment_text = ? WHERE comment_id = ?' , [author , comment , id], (err , results) => {
+        if(err){
+            console.log('error in fetching comment of id '.rainbow , id.rainbow , err);
+        }
+        else
+        {
+            res.redirect('/');
+        }
+    })
+    
+})
 
 module.exports = router;
